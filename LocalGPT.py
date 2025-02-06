@@ -1,6 +1,4 @@
-import sys
-import requests
-import markdown
+import sys,requests,markdown
 from PyQt5.QtCore import Qt
 from PyQt5 . QtWidgets import(QApplication, QMainWindow, QLineEdit, QTextEdit,QSizePolicy,
 QPushButton, QVBoxLayout, QWidget, QLabel, 
@@ -40,7 +38,7 @@ class MainWindow(QWidget):
     def __init__(self): 
         super().__init__()
         self.init_ui()
-        self.setWindowTitle("Chatbot (DeepSeek via Ollama)")
+        self.setWindowTitle("Chatbot")
 
      
     def init_ui(self):
@@ -74,7 +72,7 @@ class MainWindow(QWidget):
         """)
 
         
-
+        #CREATING A LAYOUT
         hbox = QVBoxLayout(self)
         
         
@@ -98,8 +96,6 @@ class MainWindow(QWidget):
         self.send_button=QPushButton('send', self)
         self.send_button.clicked.connect(self.sendmes)
         hbox.addWidget(self.send_button)
-        #SET LAYOUT
-        # self.setLayout(hbox)
 
     #CREATING THE BUTTON
 
@@ -116,14 +112,9 @@ class MainWindow(QWidget):
             """)
             label.setWordWrap(True) 
             label.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Maximum)
-            label.adjustSize()
-            # label.setMaximumHeight(100) 
+            label.adjustSize() 
             self.text_display_layout.addWidget(label)
             self.input_area.clear()
-
-        
-            
-            
             self.worker = ChatbotWorker(user_text)
             self.worker.response_received.connect(self.display_response)
             self.worker.start()
@@ -145,7 +136,6 @@ class MainWindow(QWidget):
         label.setWordWrap(True) 
         label.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Maximum)
         label.adjustSize()
-        # label.setMaximumHeight(100) he    
         self.text_display_layout.addWidget(label)
 
 
@@ -181,37 +171,7 @@ if __name__ == "__main__":
 
 
 
- #CREATING AN INPUT AREA
-        # self.label = QLabel(self)
-        # Mainwidget = QWidget()
-        # self.setCentralWidget(Mainwidget)
-        # Mainwidget.setLayout(hbox)
 
-
-
-
-
-
-
-
-# user_text = self.input_area.text().strip()
-        # if user_text:
-        #     # formatted_text = f"""
-        #     #     <div style="
-        #     #           /* Light cyan background */
-        #     #         border: 10px solid #ff0000;   /* Green border */
-        #     #         border-radius: 20px;          /* Rounded corners */
-        #     #         padding: 10px;               /* Space inside the box */
-        #     #         font-size: 20px;             /* Text size */
-        #     #         color: #333333;              /* Dark gray text */
-        #     #         display: inline-block;       /* Makes it wrap nicely */
-                    
-        #     #     ">
-        #     #         {user_text}
-        #     #     </div>
-        #     #     """
-        #     self.text_display.append(f"{user_text}")
-        #     self.input_area.clear()
 
 
 
